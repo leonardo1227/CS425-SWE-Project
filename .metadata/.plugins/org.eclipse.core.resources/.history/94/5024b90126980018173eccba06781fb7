@@ -1,0 +1,12 @@
+package edu.mum.cs.cs425.ahacarrentalservice.service;
+
+import java.util.List;
+
+import edu.mum.cs.cs425.ahacarrentalservice.model.CarOwnerApplication;
+
+public interface ICarOwnerApplicationService {
+	public abstract List<CarOwnerApplication> getCarOwnerApplications();
+	public abstract CarOwnerApplication saveCarOwnerApplication(CarOwnerApplication coa);
+	public abstract CarOwnerApplication findById(Long coaId);
+	public abstract void delete(Long coaId);
+}

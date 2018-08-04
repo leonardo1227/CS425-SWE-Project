@@ -1,0 +1,45 @@
+package edu.mum.cs.cs425.ahacarrentalservice.service.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import edu.mum.cs.cs425.ahacarrentalservice.model.CarOwnerApplication;
+import edu.mum.cs.cs425.ahacarrentalservice.repository.ICarOwnerApplicationRepository;
+import edu.mum.cs.cs425.ahacarrentalservice.service.ICarOwnerApplicationService;
+
+@Service("carOwnerApplicationService")
+public class CarOwnerApplicationService implements ICarOwnerApplicationService {
+	
+	@Autowired
+	ICarOwnerApplicationRepository coaRepository;
+
+	@Override
+	public List<CarOwnerApplication> getCarOwnerApplications() {
+		// TODO Auto-generated method stub
+		return coaRepository.findAll(); //findPendingApplications();
+	}
+
+	@Override
+	public CarOwnerApplication saveCarOwnerApplication(CarOwnerApplication coa) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CarOwnerApplication findById(long coaId) {
+		// TODO Auto-generated method stub
+		Optional<CarOwnerApplication> result = coaRepository.findById(coaId);
+		return result.orElse(null);
+	}
+
+	@Override
+	public CarOwnerApplication approveCarOwnerApplication(CarOwnerApplication coa) {
+		// TODO Auto-generated method stub
+		coa.setStatus("Approved");
+		return coaRepository.save(coa);
+	}
+	
+}
